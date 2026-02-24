@@ -8,6 +8,7 @@ from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
 from highdmin.users.models import User
+
 from django.shortcuts import render
 
 def panel_demo(request):
