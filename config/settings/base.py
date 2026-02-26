@@ -58,8 +58,8 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mini_lms_highadmin",
-        "USER": "mini_lms_user",
+        "NAME": "mini_lms_clon_db",
+        "USER": "mini_lms_clon_u",
         "PASSWORD": "TU_PASSWORD",
         "HOST": "127.0.0.1",
         "PORT": "5433",
@@ -101,6 +101,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "highdmin.users",
     # Your stuff: custom apps go here
+    "cursos",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -120,10 +121,12 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "users:redirect"
+# LOGIN_REDIRECT_URL = "users:redirect"
+LOGIN_REDIRECT_URL = "users:panel"
+LOGOUT_REDIRECT_URL = "account_login"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
-
+ACCOUNT_LOGOUT_ON_GET = False
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers

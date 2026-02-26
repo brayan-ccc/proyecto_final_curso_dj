@@ -6,11 +6,16 @@ from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from cursos.views import landing_home
 
 urlpatterns = [
-
+    path("", landing_home, name="home"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+
+    path("cursos/", include("cursos.urls", namespace="cursos")),
+    path("mis-cursos/", include("cursos.urls_mis", namespace="mis_cursos")),
+    path("panel/cursos/", include("cursos.urls_panel", namespace="cursos_panel")),
     # User management
     path("users/", include("highdmin.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
